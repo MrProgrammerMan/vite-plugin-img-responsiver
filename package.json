@@ -6,7 +6,7 @@
   "main": "dist/img-responsiver.es.js",
   "scripts": {
     "test": "vitest",
-    "test:example": "cd example && npm run dev",
+    "test:example": "npm run build && cd example && npm install && npm run dev",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
