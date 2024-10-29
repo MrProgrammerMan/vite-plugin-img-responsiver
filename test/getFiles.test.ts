@@ -1,8 +1,10 @@
 import { expect, test } from 'vitest'
-import { getFiles } from '../src/helpers/build-tools'
+import getFiles from '../src/helpers/getFiles'
 
 test('getFiles', () => {
-  expect(getFiles('test/assets', ['.ts'])).toContain('index.ts');
+  const tsFile = getFiles('test/assets', ['.ts']);
+  expect(tsFile).toHaveLength(1);
+  expect(tsFile).toContain('index.ts');
   const files = getFiles('test/assets', [".jpg", ".webp"]);
   expect(files).toHaveLength(3);
   expect(files).toContain("jpg0.jpg");
