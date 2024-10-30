@@ -1,4 +1,4 @@
-type imgTypes = ".jpg" | "jpeg" | ".png" | ".webp" | ".avif" | ".gif" | ".tiff";
+type imgTypes = ".jpg" | ".jpeg" | ".png" | ".webp" | ".avif" | ".gif" | ".tiff";
 type inputImgTypes = imgTypes | ".svg";
 
 /**
