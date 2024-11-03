@@ -9,9 +9,10 @@ const defaults: Config = {
   imageExtensions: [".png", ".jpg", ".jpeg", ".gif", ".webp"],
   conversionSizes: [240, 480, 768, 1280, 1920],
   outputFileTypes: [".avif", ".webp", ".jpg"],
+  outputDir: "img-responsiver-output",
   htmlDirs: "./src",
   htmlFileType: ".html",
-  imgTagRegex: /<img\s+[^>]*src=["']([^"']+)["'][^>]*alt=["']([^"']+)["'][^>]*>/g
+  imgTagRegex: /(<img\s+[^>]*src=["']([^"']+)["'][^>]*>)/g
 }
 
 export default defaults;

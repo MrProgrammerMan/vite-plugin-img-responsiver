@@ -36,6 +36,12 @@ export default interface Config {
    */
   outputFileTypes: imgTypes[];
   /**
+   * Directory where generated assets should be saved.
+   * 
+   * @type {string}
+   */
+  outputDir: string;
+  /**
    * Directories containing the HTML files to be processed.
    * 
    * @type {string | string[]}
