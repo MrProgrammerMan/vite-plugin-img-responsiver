@@ -42,3 +42,28 @@ export async function generateImageVariants(
     throw new Error(`Error generating image variants: ${err}`);
   }
 }
+
+/**
+ * Ensures that the sizes array is capped to the dimensions of the input image.
+ * Note: will ensure the sizes array does not contain sizes larger than the input image.
+ * If the image is larger than all sizes, the maximum dimension will NOT be added.
+ *
+ * @param sizes The sizes to cap.
+ * @param inputPath The path of the input image.
+ * @returns An array of capped sizes.
+ */
+export async function capSizes(
+  sizes: number[],
+  inputPath: string
+): Promise<number[]> {
+  const { width, height } = await sharp(inputPath).metadata();
+  const maxDimension: number = Math.max(width as number, height as number);
+
+  let sizesCapped: number[] = sizes.filter((size) => size <= maxDimension);
+
+  if (maxDimension < Math.max(...sizes)) {
+    sizesCapped.push(maxDimension);
+  }
+
+  return sizesCapped;
+}
