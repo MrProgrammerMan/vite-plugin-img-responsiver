@@ -11,7 +11,14 @@ export default defineConfig({
       formats: ['es', 'cjs', 'umd']  // Output formats for broad compatibility
     },
     rollupOptions: {
-      external: [], // Add external dependencies if needed
-    }
-  }
+      external: ['sharp', 'path', 'fs'], // Add external dependencies if needed
+      output: {
+        globals: {
+          sharp: 'sharp', // Specify global variable name for the UMD build
+          path: 'path',
+          fs: 'fs',
+        },
+      },
+    },
+  },
 });
