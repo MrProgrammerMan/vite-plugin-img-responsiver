@@ -6,10 +6,6 @@ type inputImgTypes = imgTypes | ".svg";
  */
 export default interface Config {
   /**
-   * Root directory for source code and assets.
-   */
-  rootDir: string;
-  /**
    * Directories where the source images are located.
    * 
    * @type {string | string[]}
