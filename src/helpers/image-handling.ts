@@ -1,5 +1,7 @@
 import sharp from "sharp";
 import fs from "fs";
+import hash from "./hash";
+import getFiles from "./getFiles";
 
 /**
  * Generates various sizes and formats of the given input image.
@@ -66,4 +68,45 @@ export async function capSizes(
   }
 
   return sizesCapped;
+}
+
+/**
+ * Processes all images in a given directory by generating multiple resized and reformatted variants of each image.
+ * 
+ * @param imageDir The directory containing the images to be processed.
+ * @param extensions The file extensions of images to be processed, e.g., '.jpg' or ['.jpg', '.png'].
+ * @param sizes An array of sizes for image variants to generate, given in pixels. Each size represents the maximum dimension while preserving aspect ratio.
+ * @param outputFileTypes The file formats for output variants, allowing both modern formats like '.avif' and standard formats like '.jpg'.
+ * @param outputDir The directory where the processed image variants will be saved.
+ * @returns A Promise that resolves to an array of unique hashes representing the filenames of all processed images.
+ */
+export default async function processImages(
+  imageDir: string,
+  extensions: string[],
+  sizes: number[],
+  outputFileTypes: string[],
+  outputDir: string
+): Promise<string[]> {
+  const tasks = getFiles(imageDir, extensions).map(async (file) => {
+    const inputPath: string = `${imageDir}/${file}`;
+    console.log(`Processing image: ${inputPath}`);
+    const outputFileName = hash(inputPath).toString();
+    const sizesCapped = await capSizes(sizes, inputPath);
+    await generateImageVariants(
+      inputPath,
+      sizesCapped,
+      outputFileTypes,
+      outputFileName,
+      outputDir
+    );
+    return outputFileName;
+  });
+
+  try {
+    const hashes: string[] = await Promise.all(tasks);
+    console.log(`Processed images in directory: ${imageDir}`);
+    return hashes;
+  } catch (err) {
+    throw new Error(`Error processing images: ${err}`);
+  }
 }
