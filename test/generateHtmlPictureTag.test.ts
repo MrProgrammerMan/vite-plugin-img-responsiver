@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import generateHtmlPictureTag from '../src/helpers/html-handling'; // Update the path accordingly
+import { generateHtmlPictureTag } from '../src/helpers/html-handling'; // Update the path accordingly
 
 describe('generateHtmlPictureTag', () => {
   it('should generate correct <picture> tag with multiple sources', () => {
