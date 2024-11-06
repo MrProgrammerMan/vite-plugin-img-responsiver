@@ -4,7 +4,7 @@ import fs from 'fs';
 
 describe('getFiles', () => {
   // Generate test files before attmepting to read them using fs
-  const testDir = 'test/getFiles';
+  const testDir = './test/getFiles';
   beforeAll(() => {
     const files = ['index.ts', 'jpg0.jpg', 'webp0.webp', 'webp1.webp'];
 
