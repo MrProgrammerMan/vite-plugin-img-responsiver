@@ -83,7 +83,7 @@ export default async function processHtml(
     htmlContent = htmlContent.replace(original, pictureTag);
   }
   fs.writeFileSync(`./${htmlDir}/${htmlFile}`, htmlContent);
-  console.log("Processed HTML file: ", htmlFile);
+  console.log("\tProcessed HTML file: ", htmlFile);
 }
 
 /**
@@ -116,14 +116,14 @@ export async function handleMatch(
   const newFileName = hash(ogImagePath.replace(/\\/g, "/")).toString();
 
   if (!allHashes.includes(newFileName)) {
-    console.log("Skipping image tag: ", src);
+    console.log("\t\tSkipping image tag: ", src);
     return ""; // Skip if image hasnt been processed
   }
 
   const relativeImgDir =
     "./" + path.relative(htmlDir, imageDir).replace(/\\/g, "/");
   const sizes = await capSizes(conversionSizes, ogImagePath); // Cap sizes based on original image dimensions
-  console.log(`Capped sizes for ${ogImagePath}: ${sizes}`);
+  console.log(`\t\tCapped sizes for ${ogImagePath}: ${sizes}`);
 
   return generateHtmlPictureTag(
     newFileName,
