@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import fs from 'fs/promises';
 import path from 'path';
 import os from 'os';
@@ -24,16 +24,23 @@ describe('processImages Integration Test', () => {
 
   beforeAll(async () => {
     // Create temporary directories in the system's temporary folder
-    tempInputDir = await fs.mkdtemp(path.join(os.tmpdir(), 'temp_input_'));
-    tempOutputDir = await fs.mkdtemp(path.join(os.tmpdir(), 'temp_output_'));
+    const tempInputDirAbsolute = await fs.mkdtemp(
+      path.join(os.tmpdir(), 'temp_input_')
+    );
+    tempOutputDir = await fs.mkdtemp(path.join(os.tmpdir(), "temp_output_"));
+    tempInputDir = path.relative(process.cwd(), tempInputDirAbsolute);
+    console.log(
+      `Created temporary directories: ${tempInputDir}, ${tempOutputDir}`
+    );
+    console.log(`Absolute input directory: ${tempInputDirAbsolute}`);
 
     // Create a sample image
-    await createDummyImage(tempInputDir + '/test.jpg', 800, 600);
+    await createDummyImage(tempInputDirAbsolute + "\\test.jpg", 800, 600);
   });
 
   it('should process images and generate resized variants in multiple formats', async () => {
     const sizes = [200, 400, 600]; // sizes for resizing
-    const extensions = ['.jpg'];    // input extensions to look for
+    const extensions = ['.jpg']; // input extensions to look for
     const outputFileTypes = ['.jpg', '.png']; // output formats to generate
 
     // Run processImages
@@ -46,15 +53,22 @@ describe('processImages Integration Test', () => {
     );
 
     // Verify that the returned hash matches the expected hash of the test image
-    const testImagePath = tempInputDir + '/test.jpg';
-    const expectedHash = hash(testImagePath).toString();
+    const testImagePath = './' + tempInputDir + '/test.jpg';
+    console.log(`Test image path being hashed: ${testImagePath}`);
+    const expectedHash = hash(testImagePath.replace(/\\/g, '/')).toString();
     expect(resultHashes).toContain(expectedHash);
 
     // Verify the expected output files exist
     for (const size of sizes) {
       for (const format of outputFileTypes) {
-        const outputFilePath = path.join(tempOutputDir, `${expectedHash}-${size}${format}`);
-        const fileExists = await fs.stat(outputFilePath).then(() => true).catch(() => false);
+        const outputFilePath = path.join(
+          tempOutputDir,
+          `${expectedHash}-${size}${format}`
+        );
+        const fileExists = await fs
+          .stat(outputFilePath)
+          .then(() => true)
+          .catch(() => false);
         expect(fileExists).toBe(true);
 
         const metadata = await sharp(outputFilePath).metadata();
