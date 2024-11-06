@@ -12,6 +12,6 @@
     "vite": "^5.4.9",
     "typescript": "~5.6.2",
     "@types/node": "^22.8.1",
-    "rollup-plugin-img-responsiver": "file:../"
+    "vite-plugin-img-responsiver": "file:../"
   }
 }

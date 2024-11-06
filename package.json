@@ -1,5 +1,5 @@
 {
-  "name": "rollup-plugin-img-responsiver",
+  "name": "vite-plugin-img-responsiver",
   "private": true,
   "version": "0.0.0",
   "type": "module",

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import imgResponsiver from 'rollup-plugin-img-responsiver'; // Import your plugin
+import imgResponsiver from 'vite-plugin-img-responsiver';
 
 export default defineConfig({
   plugins: [
