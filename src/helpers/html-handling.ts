@@ -120,7 +120,8 @@ export async function handleMatch(
     return ""; // Skip if image hasnt been processed
   }
 
-  const relativeImgDir = "./" + path.relative(htmlDir, imageDir).replace(/\\/g, "/");
+  const relativeImgDir =
+    "./" + path.relative(htmlDir, imageDir).replace(/\\/g, "/");
   const sizes = await capSizes(conversionSizes, ogImagePath); // Cap sizes based on original image dimensions
   console.log(`Capped sizes for ${ogImagePath}: ${sizes}`);
 

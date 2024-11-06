@@ -88,8 +88,8 @@ export default async function processImages(
   outputDir: string
 ): Promise<string[]> {
   const tasks = getFiles(imageDir, extensions).map(async (file) => {
-    let inputPath: string = `${imageDir}/${file}`.replace(/\\/g, '/'); // Normalize path separators
-    if (!inputPath.startsWith('./')) {
+    let inputPath: string = `${imageDir}/${file}`.replace(/\\/g, "/"); // Normalize path separators
+    if (!inputPath.startsWith("./")) {
       inputPath = `./${inputPath}`;
     }
     console.log(`\t\tProcessing image: ${inputPath}`);

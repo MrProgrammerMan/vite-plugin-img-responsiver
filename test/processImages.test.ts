@@ -11,9 +11,9 @@ import hash from "../src/helpers/hash";
  * i.e.: `capSizes` and `generateImageVariants`, I'm just going to test taht the `processImages` function calls
  * 'getFiles' and 'hash' with the correct arguments.
  * This is not a good test, but it's the best I can do right now.
- * 
+ *
  * I wish all developers of Vitest a good day and a very die.
- * 
+ *
  * - A very tired developer
  */
 
@@ -54,7 +54,13 @@ describe("processImages", () => {
     const outputFileTypes = [".avif", ".webp"];
     const outputDir = "./output";
 
-    await processImages(imageDir, extensions, sizes, outputFileTypes, outputDir);
+    await processImages(
+      imageDir,
+      extensions,
+      sizes,
+      outputFileTypes,
+      outputDir
+    );
 
     expect(getFiles).toHaveBeenCalledWith(imageDir, extensions);
     expect(hash).toHaveBeenCalledWith(`${imageDir}/image1.jpg`);
@@ -68,7 +74,13 @@ describe("processImages", () => {
     const outputFileTypes = [".avif", ".webp"];
     const outputDir = "./output";
 
-    const hashes = await processImages(imageDir, extensions, sizes, outputFileTypes, outputDir);
+    const hashes = await processImages(
+      imageDir,
+      extensions,
+      sizes,
+      outputFileTypes,
+      outputDir
+    );
 
     expect(hashes).toEqual(["12345", "12345"]);
   });

@@ -89,7 +89,8 @@ export default function imgResponsiver(
         : [config.htmlDirs];
 
       // <picture> tag regex that captures internal <img> tag
-      const pictureTagRegex = /<picture>(?:\s*<source[^>]*>\s*)*(<img[^>]*>)\s*<\/picture>/g;
+      const pictureTagRegex =
+        /<picture>(?:\s*<source[^>]*>\s*)*(<img[^>]*>)\s*<\/picture>/g;
 
       console.log("Cleaning up html...");
       console.log(`HTML Directories: ${htmlDirsArray}`);
@@ -98,7 +99,7 @@ export default function imgResponsiver(
         return getFiles(htmlDir, [config.htmlFileType]).map(
           async (htmlFile) => {
             console.log(`\tCleaning HTML file: ${htmlFile}`);
-            
+
             // Get file content
             let htmlContent = fs.readFileSync(`${htmlDir}/${htmlFile}`, "utf8");
             // Find all picture tags in the html file
