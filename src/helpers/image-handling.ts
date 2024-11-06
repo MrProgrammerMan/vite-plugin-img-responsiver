@@ -28,7 +28,7 @@ export async function generateImageVariants(
       }
       return sharp(inputPath)
         .resize(size, size, { fit: "inside" })
-        .toFile(`${outputDir}/${outputFileName}-${size}${extension}`)
+        .toFile(outputPath)
         .then((info) =>
           console.log(
             `\t\tSaved (${inputPath}) ${info.width}x${info.height} image as ${info.format}`
@@ -72,7 +72,7 @@ export async function capSizes(
 
 /**
  * Processes all images in a given directory by generating multiple resized and reformatted variants of each image.
- * 
+ *
  * @param imageDir The directory containing the images to be processed.
  * @param extensions The file extensions of images to be processed, e.g., '.jpg' or ['.jpg', '.png'].
  * @param sizes An array of sizes for image variants to generate, given in pixels. Each size represents the maximum dimension while preserving aspect ratio.
