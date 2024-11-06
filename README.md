@@ -42,7 +42,7 @@ To customize img-responsiver for your project, you can pass a configuration obje
 
 ### Example configuration
 Here is an example configuration with descriptions of each available option:
-```
+```javascript
 import imgResponsiver from 'img-responsiver';
 
 export default {
