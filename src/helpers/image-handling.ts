@@ -31,7 +31,7 @@ export async function generateImageVariants(
         .toFile(outputPath)
         .then((info) =>
           console.log(
-            `\t\tSaved (${inputPath}) ${info.width}x${info.height} image as ${info.format}`
+            `\t\t\tSaved (${inputPath}) ${info.width}x${info.height} image as ${info.format}`
           )
         );
     })
@@ -39,7 +39,7 @@ export async function generateImageVariants(
 
   try {
     await Promise.all(tasks);
-    console.log(`\tGenerated variants for image: ${inputPath}`);
+    console.log(`\t\tGenerated variants for image: ${inputPath}`);
   } catch (err) {
     throw new Error(`Error generating image variants: ${err}`);
   }
@@ -92,7 +92,7 @@ export default async function processImages(
     if (!inputPath.startsWith('./')) {
       inputPath = `./${inputPath}`;
     }
-    console.log(`Processing image: ${inputPath}`);
+    console.log(`\t\tProcessing image: ${inputPath}`);
     const outputFileName = hash(inputPath).toString();
     const sizesCapped = await capSizes(sizes, inputPath);
     await generateImageVariants(
@@ -107,7 +107,7 @@ export default async function processImages(
 
   try {
     const hashes: string[] = await Promise.all(tasks);
-    console.log(`Processed images in directory: ${imageDir}`);
+    console.log(`\tProcessed images in directory: ${imageDir}`);
     return hashes;
   } catch (err) {
     throw new Error(`Error processing images: ${err}`);
