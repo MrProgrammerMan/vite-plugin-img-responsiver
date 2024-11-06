@@ -1,4 +1,4 @@
-import { Plugin } from "rollup";
+import { Plugin } from "vite";
 import Config from "./config";
 import defaults from "./defaults";
 import processImages from "./helpers/image-handling";
@@ -19,7 +19,7 @@ export default function imgResponsiver(
   return {
     name: "img-responsiver",
     version: "1.0.0",
-    async buildStart() {
+    async configResolved() {
       // Create output directory if it doesn't exist
       if (!fs.existsSync(config.outputDir)) {
         fs.mkdirSync(config.outputDir);
