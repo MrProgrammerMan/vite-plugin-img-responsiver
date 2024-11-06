@@ -67,7 +67,7 @@ export default function imgResponsiver(
         return getFiles(htmlDir, [config.htmlFileType]).map(
           async (htmlFile) => {
             console.log(`\tProcessing HTML file: ${htmlFile}`);
-            processHtml(
+            await processHtml(
               htmlDir,
               htmlFile,
               config.imgTagRegex,
