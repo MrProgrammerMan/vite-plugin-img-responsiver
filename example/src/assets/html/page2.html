@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="module" src="../ts/index.ts"></script>
+</head>
+<body>
+  <h1>This is page 2</h1>
+  <p>It also has images, and they too, are responive(this is very cool)</p>
+  <p>This works because the location of the images as well as this html file have been specified to the img-responsiver plugin.</p>
+  <p>The plugin only modifies images and html in the specified directories.</p>
+  <p>This example project has a full config definition in vite.config.ts</p>
+  <p>You can omit any of the fields, and the default will apply instead.</p>
+  <br>
+  <img src="../imgs/cat-with-open-mouth.webp" alt="A cat with it's mouth open.">
+  <p>Below is an image that recides in a folder that isn't specified to the plugin.</p>
+  <p>It is not responsive, but loads in it's original size and format.</p>
+  <img src="../imgs-not-responsive/a-png-cat.png" alt="A cat with transparent background in png format.">
+  <p>The plugin also works for images with the same name in different directories.</p>
+  <p>Enjoy :)</p>
+</body>
+</html>
