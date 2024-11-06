@@ -19,7 +19,13 @@ export default function imgResponsiver(
   return {
     name: "img-responsiver",
     version: "1.0.0",
-    async configResolved() {
+    async configResolved(viteConfig) {
+      // Return if in preview mode
+      if (viteConfig.command === "serve" && viteConfig.mode === "production") {
+        console.log("Preview mode detected. Skipping plugin img-responsiver.");
+        return;
+      }
+
       // Create output directory if it doesn't exist
       if (!fs.existsSync(config.outputDir)) {
         fs.mkdirSync(config.outputDir);
