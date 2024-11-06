@@ -11,7 +11,7 @@ const defaults: Config = {
   outputDir: "img-responsiver-output",
   htmlDirs: ["./", "./src"],
   htmlFileType: ".html",
-  imgTagRegex: /(<img\s+[^>]*src=["']([^"']+)["'][^>]*>)/g
+  imgTagRegex: /<img\s+[^>]*src=["']([^"']+)["'][^>]*>/g
 }
 
 export default defaults;
