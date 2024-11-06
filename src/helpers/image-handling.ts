@@ -88,7 +88,10 @@ export default async function processImages(
   outputDir: string
 ): Promise<string[]> {
   const tasks = getFiles(imageDir, extensions).map(async (file) => {
-    const inputPath: string = `${imageDir}/${file}`;
+    let inputPath: string = `${imageDir}/${file}`.replace(/\\/g, '/'); // Normalize path separators
+    if (!inputPath.startsWith('./')) {
+      inputPath = `./${inputPath}`;
+    }
     console.log(`Processing image: ${inputPath}`);
     const outputFileName = hash(inputPath).toString();
     const sizesCapped = await capSizes(sizes, inputPath);
