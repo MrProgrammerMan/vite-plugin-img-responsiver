@@ -67,6 +67,11 @@ export default {
 - `htmlFileType`: File extension for HTML files, e.g., `.html`.
 - `imgTagRegex`: Regular expression to match `<img>` tags for replacement. The default regex targets common HTML `<img>` tags.
 
+## Example
+Want to see an example of the plugin?
+Clone the repo and run the example folder as a vite project.
+It works both in dev and in preview!
+
 ## Feedback
 This is the first time I have created a Vite plugin, or any plugin for that matter.
 It has been a learning experience, and I am very pleased to have an actually working plugin.
