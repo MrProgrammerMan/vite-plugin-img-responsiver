@@ -31,9 +31,9 @@ Some web development frameworks also perform a similar task, so this tool may no
 To install the plugin, add it to your project using npm or yarn:
 
 ```sh
-npm install img-responsiver --save-dev
+npm install vite-plugin-img-responsiver --save-dev
 # or
-yarn add img-responsiver --dev
+yarn add vite-plugin-img-responsiver --dev
 ```
 
 ## Configuration
@@ -43,7 +43,7 @@ To customize img-responsiver for your project, you can pass a configuration obje
 ### Example configuration
 Here is an example configuration with descriptions of each available option:
 ```javascript
-import imgResponsiver from 'img-responsiver';
+import imgResponsiver from 'vite-plugin-img-responsiver';
 
 export default {
   imagesDirs: './src/assets/images', // Specifies one or more directories for source images
