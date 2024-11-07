@@ -2,6 +2,7 @@
   "name": "vite-plugin-img-responsiver",
   "private": true,
   "version": "0.0.0",
+  "description": "A Vite plugin for generating responsive images",
   "type": "module",
   "main": "dist/img-responsiver.es.js",
   "keywords": [
