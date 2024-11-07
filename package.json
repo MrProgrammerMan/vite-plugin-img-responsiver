@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-img-responsiver",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Vite plugin for generating responsive images",
   "type": "module",
   "main": "dist/img-responsiver.es.js",
@@ -21,11 +21,9 @@
   },
   "devDependencies": {
     "@types/node": "^22.8.1",
-    "rollup-plugin-node-polyfills": "^0.2.1",
     "typescript": "~5.6.2",
     "vite": "^5.4.9",
     "vite-plugin-inspect": "^0.8.7",
-    "vite-plugin-node-polyfills": "^0.22.0",
     "vitest": "^2.1.4"
   },
   "dependencies": {
