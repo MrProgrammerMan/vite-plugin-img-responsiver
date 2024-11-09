@@ -53,9 +53,9 @@ describe("processImages Integration Test", () => {
     );
 
     // Verify that the returned hash matches the expected hash of the test image
-    const testImagePath = "./" + tempInputDir + "/test.jpg";
+    const testImagePath = path.normalize(path.join(tempInputDir, "/test.jpg"));
     console.log(`Test image path being hashed: ${testImagePath}`);
-    const expectedHash = hash(testImagePath.replace(/\\/g, "/")).toString();
+    const expectedHash = hash(testImagePath).toString();
     expect(resultHashes).toContain(expectedHash);
 
     // Verify the expected output files exist

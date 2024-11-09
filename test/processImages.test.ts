@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import processImages from "../src/helpers/image-handling";
 import getFiles from "../src/helpers/getFiles";
 import hash from "../src/helpers/hash";
+import path from "path";
 
 /**
  * This test file is used to test the `processImages` function.
@@ -63,8 +64,8 @@ describe("processImages", () => {
     );
 
     expect(getFiles).toHaveBeenCalledWith(imageDir, extensions);
-    expect(hash).toHaveBeenCalledWith(`${imageDir}/image1.jpg`);
-    expect(hash).toHaveBeenCalledWith(`${imageDir}/image2.png`);
+    expect(hash).toHaveBeenCalledWith(path.normalize(path.join(imageDir, "image1.jpg")));
+    expect(hash).toHaveBeenCalledWith(path.normalize(path.join(imageDir, "image2.png")));
   });
 
   it("should return an array of unique hashes representing the filenames of all processed images", async () => {
