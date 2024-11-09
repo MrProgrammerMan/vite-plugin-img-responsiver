@@ -108,20 +108,16 @@ export async function handleMatch(
   outputFileTypes: string[]
 ): Promise<string> {
   // Construct the path to the image from root (where this script runs)
-  let ogImagePath = path.join(htmlDir, src);
-  if (!ogImagePath.startsWith("./")) {
-    ogImagePath = `./${ogImagePath}`;
-  }
+  let ogImagePath = path.normalize(path.join(htmlDir, src));
 
-  const newFileName = hash(ogImagePath.replace(/\\/g, "/")).toString();
+  const newFileName = hash(ogImagePath).toString();
 
   if (!allHashes.includes(newFileName)) {
     console.log("\t\tSkipping image tag: ", src);
     return ""; // Skip if image hasnt been processed
   }
 
-  const relativeImgDir =
-    "./" + path.relative(htmlDir, imageDir).replace(/\\/g, "/");
+  const relativeImgDir = path.normalize(path.relative(htmlDir, imageDir));
   const sizes = await capSizes(conversionSizes, ogImagePath); // Cap sizes based on original image dimensions
   console.log(`\t\tCapped sizes for ${ogImagePath}: ${sizes}`);
 

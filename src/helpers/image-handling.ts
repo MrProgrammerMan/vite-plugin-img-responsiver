@@ -2,6 +2,7 @@ import sharp from "sharp";
 import fs from "fs";
 import hash from "./hash";
 import getFiles from "./getFiles";
+import path from "path";
 
 /**
  * Generates various sizes and formats of the given input image.
@@ -88,10 +89,7 @@ export default async function processImages(
   outputDir: string
 ): Promise<string[]> {
   const tasks = getFiles(imageDir, extensions).map(async (file) => {
-    let inputPath: string = `${imageDir}/${file}`.replace(/\\/g, "/"); // Normalize path separators
-    if (!inputPath.startsWith("./")) {
-      inputPath = `./${inputPath}`;
-    }
+    let inputPath: string = path.normalize(path.join(imageDir, file));
     console.log(`\t\tProcessing image: ${inputPath}`);
     const outputFileName = hash(inputPath).toString();
     const sizesCapped = await capSizes(sizes, inputPath);
