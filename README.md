@@ -69,7 +69,10 @@ export default {
 
 ## Example
 Want to see an example of the plugin?
-Clone the repo and run the example folder as a vite project.
+Clone the repo and run the example folder as a vite project:
+
+https://github.com/MrProgrammerMan/vite-plugin-img-responsiver.git
+
 It works both in dev and in preview!
 
 ## Feedback
