@@ -16,7 +16,7 @@ The plugin utilizes the `configResolved` Vite hook (hence why this is not a Roll
 
 ## Who this tool is for
 
-This tool allows automatically generating responsive images in smaller projects.
+This tool allows automatically generating responsive images for static websites.
 It's designed to improve responsiveness of a web project with minimal setup and effort from the developer.
 It offloads the tedious task of manually generating responsive images.
 
@@ -24,7 +24,7 @@ It offloads the tedious task of manually generating responsive images.
 
 This tool performs a function usually handled by content delivery networks(CDNs) in larger deployed projects.
 If you are developing such a system, this tool should not replace that functionality.
-Some web development frameworks also perform a similar task, so this tool may not be suitable if you are using one of those.
+Some web development frameworks also perform a similar task, so this tool may not be suitable if you are using one of those. Its just designed to bring responsive images to static sites where one might not typically bother.
 
 ## Installation
 
