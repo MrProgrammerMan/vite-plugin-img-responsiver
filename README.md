@@ -4,6 +4,8 @@
 It creates and also deletes files.
 Use it as intended and described.
 
+*ALSO NOTE*: **This tool was made by a newbie software engineering student messing around. It will not be updated or fixed, and frankly is just a silly solution to a problem that's already been solved. Please don't use it.**
+
 `img-responsiver` is a Vite plugin that generates images at different sizes and file formats, replacing HTML `<img>` tags with `<picture>` tags for responsiveness. This ensures that your web application serves the most appropriate image for the user's device, improving load times and user experience.
 
 The plugin utilizes the `configResolved` Vite hook (hence why this is not a Rollup plugin).
